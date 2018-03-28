@@ -15,7 +15,10 @@ public class Start {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TEF cappta = new Cappta("08476665000188", "51", "63I8UAWW");
+        String canpj = "08476665000188";    // CNPJ DA EMPRESA
+        String pdv = "51";                  // Nº do PDV FORNECIDO PELA CAPPTA
+        String chave = "12312312312312";          // SENHA FORNECIDA PELA CAPPTA
+        TEF cappta = new Cappta(canpj, pdv, chave);
         cappta.Autenticacao();
         RetornoCappta retorno = (RetornoCappta) cappta.pagarCredito(new BigDecimal("0.01"));
         if (retorno instanceof RetornoAprovado) {
