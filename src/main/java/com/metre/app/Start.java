@@ -25,9 +25,9 @@ public class Start {
             System.out.println("================================================================\n");
             System.out.println("COMPROVANTE REDUZIDO " + ((RetornoAprovado) retorno).getComprovanteReduzido() + "\n\n");
         } else if (retorno instanceof RetornoPendente) {
-
+            System.out.println("MOTIVO DA RECUSA: " + ((RetornoRecusado) retorno).getMotivo());
         } else if (retorno instanceof RetornoRecusado) {
-            System.out.println("MOTIVO DA RECUSA: "+((RetornoRecusado) retorno).getMotivo());
+            System.out.println("MOTIVO DA RECUSA: " + ((RetornoRecusado) retorno).getMotivo());
         }
     }
 }
