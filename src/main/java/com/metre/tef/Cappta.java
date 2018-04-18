@@ -12,6 +12,8 @@ import com.metre.cappta.services.CancelarTransacao;
 import com.metre.cappta.services.RecebeCredito;
 import com.metre.cappta.services.RecebeDebitoVoucher;
 import java.math.BigDecimal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,6 +26,10 @@ public class Cappta extends TEF {
     private String chave;
 
     public Cappta(String cnpj, String pdv, String chave) {
+        System.out.println(System.getProperty("sun.arch.data.model"));
+        if (!System.getProperty("sun.arch.data.model").equals("32")) {
+            throw new RuntimeException("Versão do JAVA não suportada! Utiliza uma versão 32 Bits.");
+        }
         this.cnpj = cnpj;
         this.pdv = pdv;
         this.chave = chave;

@@ -16,18 +16,22 @@ public class Start {
      */
     public static void main(String[] args) {
         TEF cappta = new Cappta("08476665000188", "51", "63I8UAWW");
-        cappta.Autenticacao();
-        RetornoCappta retorno = (RetornoCappta) cappta.pagarCredito(new BigDecimal("0.01"));
-        if (retorno instanceof RetornoAprovado) {
-            System.out.println("COMPROVANTE CLIENTE " + ((RetornoAprovado) retorno).getComprovanteClienteCompleto() + "\n\n");
-            System.out.println("================================================================\n");
-            System.out.println("COMPROVANTE LOJISTA " + ((RetornoAprovado) retorno).getComprovanteLojaCompleto() + "\n\n");
-            System.out.println("================================================================\n");
-            System.out.println("COMPROVANTE REDUZIDO " + ((RetornoAprovado) retorno).getComprovanteReduzido() + "\n\n");
-        } else if (retorno instanceof RetornoPendente) {
-            System.out.println("MOTIVO DA RECUSA: " + ((RetornoRecusado) retorno).getMotivo());
-        } else if (retorno instanceof RetornoRecusado) {
-            System.out.println("MOTIVO DA RECUSA: " + ((RetornoRecusado) retorno).getMotivo());
+        if (cappta.Autenticacao()) {
+            RetornoCappta retorno = (RetornoCappta) cappta.pagarCredito(new BigDecimal("0.01"));
+            if (retorno instanceof RetornoAprovado) {
+                System.out.println("COMPROVANTE CLIENTE " + ((RetornoAprovado) retorno).getComprovanteClienteCompleto() + "\n\n");
+                System.out.println("================================================================\n");
+                System.out.println("COMPROVANTE LOJISTA " + ((RetornoAprovado) retorno).getComprovanteLojaCompleto() + "\n\n");
+                System.out.println("================================================================\n");
+                System.out.println("COMPROVANTE REDUZIDO " + ((RetornoAprovado) retorno).getComprovanteReduzido() + "\n\n");
+            } else if (retorno instanceof RetornoPendente) {
+                System.out.println("MOTIVO DA RECUSA: " + ((RetornoRecusado) retorno).getMotivo());
+            } else if (retorno instanceof RetornoRecusado) {
+                System.out.println("MOTIVO DA RECUSA: " + ((RetornoRecusado) retorno).getMotivo());
+            }
+        } else {
+            return;
         }
+
     }
 }
