@@ -46,12 +46,12 @@ public class CancelarTransacao {
 
             if (iteracaoTef.is(IMensagem.class)) {
                 IMensagem iMensagem = iteracaoTef.queryInterface(IMensagem.class);
-                JOptionPane.showMessageDialog(null, iMensagem.descricao());
+//                JOptionPane.showMessageDialog(null, iMensagem.descricao());
             }
 
             if (iteracaoTef.is(IRequisicaoParametro.class)) {
                 IRequisicaoParametro iRequisicaoParametro = iteracaoTef.queryInterface(IRequisicaoParametro.class);
-                JOptionPane.showMessageDialog(null, iRequisicaoParametro.mensagem());
+//                JOptionPane.showMessageDialog(null, iRequisicaoParametro.mensagem());
             }
 
             if (iteracaoTef.is(IRespostaTransacaoPendente.class)) {
