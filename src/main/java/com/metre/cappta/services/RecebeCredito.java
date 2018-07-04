@@ -68,6 +68,7 @@ public class RecebeCredito {
             }
             if (iteracaoTef.is(IRespostaOperacaoRecusada.class)) {
                 IRespostaOperacaoRecusada resposta = iteracaoTef.queryInterface(IRespostaOperacaoRecusada.class);
+                System.out.println("CODIGO: " + resposta.codigoMotivo());
                 return new RetornoRecusado(resposta);
             }
             if (iteracaoTef.is(IRespostaOperacaoAprovada.class)) {

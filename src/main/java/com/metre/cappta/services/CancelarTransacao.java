@@ -5,8 +5,6 @@
  */
 package com.metre.cappta.services;
 
-import com.metre.cappta.ClassFactory;
-import com.metre.cappta.IClienteCappta;
 import com.metre.cappta.IIteracaoTef;
 import com.metre.cappta.IMensagem;
 import com.metre.cappta.IRequisicaoParametro;
@@ -47,23 +45,29 @@ public class CancelarTransacao {
             if (iteracaoTef.is(IMensagem.class)) {
                 IMensagem iMensagem = iteracaoTef.queryInterface(IMensagem.class);
 //                JOptionPane.showMessageDialog(null, iMensagem.descricao());
+
+                System.out.println("M1 " + iMensagem.descricao());
             }
 
             if (iteracaoTef.is(IRequisicaoParametro.class)) {
                 IRequisicaoParametro iRequisicaoParametro = iteracaoTef.queryInterface(IRequisicaoParametro.class);
-//                JOptionPane.showMessageDialog(null, iRequisicaoParametro.mensagem());
+//                JOptionPane.showMessageDialog(null, );
+                System.out.println("M2 " + iRequisicaoParametro.mensagem());
             }
 
             if (iteracaoTef.is(IRespostaTransacaoPendente.class)) {
                 IRespostaTransacaoPendente resposta = iteracaoTef.queryInterface(IRespostaTransacaoPendente.class);
+                System.out.println("MENSAGEM: " + resposta.mensagem());
                 return new RetornoPendente(resposta);
             }
             if (iteracaoTef.is(IRespostaOperacaoRecusada.class)) {
                 IRespostaOperacaoRecusada resposta = iteracaoTef.queryInterface(IRespostaOperacaoRecusada.class);
+                System.out.println("MENSAGEM: " + resposta.motivo());
                 return new RetornoRecusado(resposta);
             }
             if (iteracaoTef.is(IRespostaOperacaoAprovada.class)) {
                 IRespostaOperacaoAprovada resposta = iteracaoTef.queryInterface(IRespostaOperacaoAprovada.class);
+                System.out.println("DATA AUTORIZACAO CANCELAMENTO : "+resposta.dataHoraAutorizacao());
                 ContanteCaptta.cappta.confirmarPagamentos();
                 return new RetornoAprovado(resposta);
 
@@ -82,7 +86,6 @@ public class CancelarTransacao {
 //            ContanteCaptta.cappta.desfazerPagamentos();
 //        }
 //    }
-
     private boolean OperacaoNaoFinalizada(IIteracaoTef iteracaoTef) {
         return iteracaoTef.tipoIteracao() != 1 && iteracaoTef.tipoIteracao() != 2;
     }
