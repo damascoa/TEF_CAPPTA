@@ -15,6 +15,7 @@ import com.metre.cappta.RetornoAprovado;
 import com.metre.cappta.RetornoCappta;
 import com.metre.cappta.RetornoPendente;
 import com.metre.cappta.RetornoRecusado;
+import com.metre.cappta.TratarErros;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,7 +36,7 @@ public class CancelarTransacao {
         RetornoCappta retorno = null;
         int resultado = ContanteCaptta.cappta.cancelarPagamento(senhaAdministrativa, numeroControle);
         if (resultado != 0) {
-            return new RetornoRecusado(resultado, "Motivo desconhecido!");
+            return new RetornoRecusado(resultado, new TratarErros(resultado).getMensagem());
         }
 
         IIteracaoTef iteracaoTef = null;

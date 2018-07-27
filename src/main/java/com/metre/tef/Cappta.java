@@ -38,7 +38,14 @@ public class Cappta extends TEF {
     @Override
     public Boolean Autenticacao() {
         Autenticar autenticar = new Autenticar();
-        return new Autenticar().autenticar(cnpj, Integer.parseInt(pdv), chave);
+        Boolean bol = new Autenticar().autenticar(cnpj, Integer.parseInt(pdv), chave);
+        System.out.println("FOI BOL"+bol);
+        
+        if (bol) {
+            return true;
+        } else {
+            throw new RuntimeException("Não foi possível autenticar com o Cappta!");
+        }
     }
 
     @Override

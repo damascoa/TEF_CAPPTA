@@ -18,6 +18,7 @@ import com.metre.cappta.RetornoCappta;
 import com.metre.cappta.RetornoAprovado;
 import com.metre.cappta.RetornoPendente;
 import com.metre.cappta.RetornoRecusado;
+import com.metre.cappta.TratarErros;
 import java.math.BigDecimal;
 import javax.swing.JOptionPane;
 
@@ -43,7 +44,7 @@ public class RecebeCredito {
 
         int resultado = ContanteCaptta.cappta.pagamentoCredito(valor.doubleValue(), idetalhesCredito);
         if (resultado != 0) {
-            return new RetornoRecusado(resultado, "Motivo desconhecido!");
+            return new RetornoRecusado(resultado, new TratarErros(resultado).getMensagem());
         }
         this.pagamentoProcessado = true;
 
