@@ -5,7 +5,9 @@
  */
 package com.metre.tef;
 
+import com.metre.cappta.services.enums.TipoVia;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  *
@@ -32,5 +34,13 @@ public class TEF implements ITEF {
     public RetornoTEF cancelarPagamento(String senha, String numeroControle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
+    @Override
+    public RetornoTEF  reimprimirTEF(String numeroControle, TipoVia tipoVia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+  
 
 }

@@ -38,15 +38,57 @@ public class RetornoAprovado extends RetornoCappta {
         this.nsuTEF = iRespostaOperacaoAprovada.nsuTef();
 
         if (iRespostaOperacaoAprovada.cupomCliente() != null) {
-            comprovanteClienteCompleto = iRespostaOperacaoAprovada.cupomCliente().replaceAll("\"", "");
+            comprovanteClienteCompleto = addBarraN(iRespostaOperacaoAprovada.cupomCliente());
         }
         if (iRespostaOperacaoAprovada.cupomLojista() != null) {
-            comprovanteLojaCompleto = iRespostaOperacaoAprovada.cupomLojista().replaceAll("\"", "");
+            comprovanteLojaCompleto = addBarraN(iRespostaOperacaoAprovada.cupomLojista());
         }
         if (iRespostaOperacaoAprovada.cupomReduzido() != null) {
-            comprovanteReduzido = iRespostaOperacaoAprovada.cupomReduzido().replaceAll("\"", "");
+            comprovanteReduzido = addBarraN(iRespostaOperacaoAprovada.cupomReduzido());
         }
+    }
 
+     public static String addBarraN(String string) {
+        String saida = "";
+
+        saida = string.replace("A\"", "A\"\n")
+                .replace("\"\"", "\n")
+                .replace("B\"", "B\"\n")
+                .replace("C\"", "C\"\n")
+                .replace("D\"", "D\"\n")
+                .replace("E\"", "E\"\n")
+                .replace("F\"", "F\"\n")
+                .replace("G\"", "G\"\n")
+                .replace("H\"", "H\"\n")
+                .replace("I\"", "I\"\n")
+                .replace("J\"", "J\"\n")
+                .replace("L\"", "L\"\n")
+                .replace("M\"", "M\"\n")
+                .replace("N\"", "N\"\n")
+                .replace("O\"", "O\"\n")
+                .replace("P\"", "P\"\n")
+                .replace("Q\"", "Q\"\n")
+                .replace("R\"", "R\"\n")
+                .replace("S\"", "S\"\n")
+                .replace("T\"", "T\"\n")
+                .replace("U\"", "U\"\n")
+                .replace("V\"", "V\"\n")
+                .replace("X\"", "X\"\n")
+                .replace("Z\"", "Z\"\n")
+                .replace("*\"", "*\"\n")
+                .replace("0\"", "0\"\n")
+                .replace("1\"", "1\"\n")
+                .replace("2\"", "2\"\n")
+                .replace("3\"", "3\"\n")
+                .replace("4\"", "4\"\n")
+                .replace("5\"", "5\"\n")
+                .replace("6\"", "6\"\n")
+                .replace("7\"", "7\"\n")
+                .replace("8\"", "8\"\n")
+                .replace("9\"", "9\"\n")
+                .replaceAll("\"", "");
+
+        return saida;
     }
 
     public Date getDataAutorizacao() {

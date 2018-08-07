@@ -5,7 +5,10 @@
  */
 package com.metre.tef;
 
+import com.metre.cappta.RetornoCappta;
+import com.metre.cappta.services.enums.TipoVia;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  *
@@ -27,5 +30,7 @@ public interface ITEF {
     //CONTROLE  =  RETORNADO NA TRANSACAO 03750801023
     //CONTROLE  =  RETORNADO NA TRANSACAO 123456
     public RetornoTEF cancelarPagamento(String senha, String numeroControle);
+
+    public RetornoTEF reimprimirTEF(String numeroControle, TipoVia tipoVia);
 
 }

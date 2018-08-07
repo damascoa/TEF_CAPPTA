@@ -11,7 +11,10 @@ import com.metre.cappta.services.Autenticar;
 import com.metre.cappta.services.CancelarTransacao;
 import com.metre.cappta.services.RecebeCredito;
 import com.metre.cappta.services.RecebeDebitoVoucher;
+import com.metre.cappta.services.Reimpressao;
+import com.metre.cappta.services.enums.TipoVia;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,8 +42,8 @@ public class Cappta extends TEF {
     public Boolean Autenticacao() {
         Autenticar autenticar = new Autenticar();
         Boolean bol = new Autenticar().autenticar(cnpj, Integer.parseInt(pdv), chave);
-        System.out.println("FOI BOL"+bol);
-        
+        System.out.println("FOI BOL" + bol);
+
         if (bol) {
             return true;
         } else {
@@ -61,6 +64,11 @@ public class Cappta extends TEF {
     @Override
     public RetornoCappta cancelarPagamento(String senha, String numeroControle) {
         return new CancelarTransacao(senha, numeroControle).cancelar();
+    }
+
+    @Override
+    public RetornoCappta reimprimirTEF(String numeroControle, TipoVia tipoVia) {
+        return new Reimpressao(numeroControle, tipoVia).reimprimir();
     }
 
 }
